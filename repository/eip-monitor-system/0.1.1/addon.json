@@ -10,6 +10,7 @@
   "isGlobal": true,
   "info": {
     "description": "通过prometheus/grafana监控Kubernetes资源层的信息，包括CPU使用、内存使用、网络使用等信息。",
-    "document": "https://shaohq.github.io/eip-monitor-system/"
+    "document": "https://github.com/eip-work/kuboard-addons/tree/master/repository/eip-monitor-system/0.1.1",
+    "important": "会出现 etcd-certs Not Found 的错误，参考 https://kuboard.cn/guide/example/monitor.htmll#安装监控套件"
   }
 }

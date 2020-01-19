@@ -42,6 +42,38 @@ subjects:
   namespace: kube-system
 
 ---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: system:metrics-server
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  - nodes
+  - nodes/stats
+  - namespaces
+  verbs:
+  - get
+  - list
+  - watch
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: system:metrics-server
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:metrics-server
+subjects:
+- kind: ServiceAccount
+  name: metrics-server
+  namespace: kube-system
+  
+---
 apiVersion: apiregistration.k8s.io/v1beta1
 kind: APIService
 metadata:
@@ -128,34 +160,3 @@ spec:
   - port: 443
     protocol: TCP
     targetPort: main-port
-
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: system:metrics-server
-rules:
-- apiGroups:
-  - ""
-  resources:
-  - pods
-  - nodes
-  - nodes/stats
-  - namespaces
-  verbs:
-  - get
-  - list
-  - watch
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: system:metrics-server
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: system:metrics-server
-subjects:
-- kind: ServiceAccount
-  name: metrics-server
-  namespace: kube-system

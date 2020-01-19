@@ -13,6 +13,6 @@
     "context": "部署时添加 annotation： k8s.eip.work/monitor=Pinpoint",
     "container": "容器中的应用程序必须是Java，且配置了 -javaagent",
     "description": "使用 Pinpoint 对微服务进行链路追踪",
-    "document": "https://shaohq.github.io/eip-monitor-pinpoint/"
+    "document": "https://github.com/eip-work/kuboard-addons/tree/master/repository/eip-monitor-pinpoint/0.1.0"
   }
 }
